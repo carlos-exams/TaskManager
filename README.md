@@ -1,2 +1,2 @@
 # TaskManager
-Task mager developed for Mimacom
+Task manager developed for Mimacom
