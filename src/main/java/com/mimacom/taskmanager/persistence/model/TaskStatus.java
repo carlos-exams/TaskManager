@@ -2,14 +2,16 @@ package com.mimacom.taskmanager.persistence.model;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @EqualsAndHashCode(callSuper = true)
 @ToString
 @RequiredArgsConstructor
-@Table(name="task")
-public class Task extends AbstractEntity{
+@Table(name="task_status")
+public class TaskStatus extends AbstractEntity{
     @Column(name="name", nullable = false)
     @Getter(AccessLevel.PUBLIC)
     @Setter(AccessLevel.PUBLIC)
@@ -21,18 +23,11 @@ public class Task extends AbstractEntity{
     @Setter(AccessLevel.PUBLIC)
     protected String description;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "status_id", referencedColumnName = "id")
-    @Getter(AccessLevel.PUBLIC)
-    @Setter(AccessLevel.PUBLIC)
-    @NonNull
-    protected TaskStatus status;
-
-    public Task() {
+    public TaskStatus() {
         super();
     }
 
-    public Task(String name, String description) {
+    public TaskStatus(String name, String description) {
         this();
         this.setName(name);
         this.setDescription(description);

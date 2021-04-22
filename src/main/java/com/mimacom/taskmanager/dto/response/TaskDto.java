@@ -16,6 +16,10 @@ public class TaskDto extends AbstractResponseDto{
     @Setter(AccessLevel.PUBLIC)
     protected String description;
 
+    @Getter(AccessLevel.PUBLIC)
+    @Setter(AccessLevel.PUBLIC)
+    protected String statusName;
+
     public TaskDto() {
         super();
     }
@@ -24,5 +28,6 @@ public class TaskDto extends AbstractResponseDto{
         super(task.getId(), task.getCreationDate(), task.getUpdateDate());
         this.setName(task.getName());
         this.setDescription(task.getDescription());
+        this.setStatusName(task.getStatus().getName());
     }
 }
