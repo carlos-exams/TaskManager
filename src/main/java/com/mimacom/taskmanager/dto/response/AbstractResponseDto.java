@@ -9,16 +9,16 @@ import java.util.Date;
 @ToString
 @RequiredArgsConstructor
 public abstract class AbstractResponseDto {
-    @Getter(AccessLevel.PROTECTED)
-    @Setter(AccessLevel.PROTECTED)
+    @Getter(AccessLevel.PUBLIC)
+    @Setter(AccessLevel.PUBLIC)
     protected  Integer id;
 
-    @Getter(AccessLevel.PROTECTED)
-    @Setter(AccessLevel.PROTECTED)
+    @Getter(AccessLevel.PUBLIC)
+    @Setter(AccessLevel.PUBLIC)
     protected Date creationDate;
 
-    @Getter(AccessLevel.PROTECTED)
-    @Setter(AccessLevel.PROTECTED)
+    @Getter(AccessLevel.PUBLIC)
+    @Setter(AccessLevel.PUBLIC)
     protected Date updateDate;
 
     protected AbstractResponseDto (Integer id, Date creationDate, Date updateDate){

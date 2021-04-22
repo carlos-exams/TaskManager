@@ -7,13 +7,13 @@ import lombok.*;
 @ToString
 @RequiredArgsConstructor
 public class TaskDto extends AbstractResponseDto{
-    @Getter(AccessLevel.PROTECTED)
-    @Setter(AccessLevel.PROTECTED)
+    @Getter(AccessLevel.PUBLIC)
+    @Setter(AccessLevel.PUBLIC)
     @NonNull
     protected String name;
 
-    @Getter(AccessLevel.PROTECTED)
-    @Setter(AccessLevel.PROTECTED)
+    @Getter(AccessLevel.PUBLIC)
+    @Setter(AccessLevel.PUBLIC)
     protected String description;
 
     public TaskDto() {

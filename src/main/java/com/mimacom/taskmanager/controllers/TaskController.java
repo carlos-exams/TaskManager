@@ -2,6 +2,8 @@ package com.mimacom.taskmanager.controllers;
 
 import com.mimacom.taskmanager.dto.request.CreateTaskDto;
 import com.mimacom.taskmanager.services.ITaskService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiParam;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,20 +11,24 @@ import org.springframework.web.bind.annotation.*;
 import com.mimacom.taskmanager.dto.response.TaskDto;
 import com.mimacom.taskmanager.persistence.model.Task;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("/task")
 public class TaskController extends AbstractController<TaskDto, ITaskService> {
 
     @Autowired
     private ITaskService taskService;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public TaskDto getTaskById(@PathVariable Integer id){
+    /*
+    TODO - Having the id as integer is breaking swagger
+    @GetMapping(value = "/{id}")
+    @ApiImplicitParam(name = "id", value = "Task ID",required = true, dataType = "Integer")
+    public TaskDto getTaskById(
+            @ApiParam(value = "The task id", required = true) @PathVariable("id") Integer id){
         // Todo - try with notfoundexception instead
         TaskDto taskDto = taskService.findById(id)
                 .map(t -> new TaskDto(t))
@@ -30,17 +36,17 @@ public class TaskController extends AbstractController<TaskDto, ITaskService> {
 
         return taskDto;
     }
+    */
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping(value = "tasks")
     public List<TaskDto> getTasks() {
         List<Task> taskList = taskService.findAll();
         return convertListToDto(taskList);
     }
 
-
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus( HttpStatus.OK )
-    public void createTask(@RequestBody CreateTaskDto dto) {
+    public void createTask(@RequestBody @Valid CreateTaskDto dto) {
         List <Task> taskList = taskService.findByName(dto.getName());
 
         // if there is no other task with the same name we proceed
@@ -53,7 +59,6 @@ public class TaskController extends AbstractController<TaskDto, ITaskService> {
         }
 
     }
-
 
     public List<TaskDto> convertListToDto(List <Task> taskList) {
         return taskList.stream()
