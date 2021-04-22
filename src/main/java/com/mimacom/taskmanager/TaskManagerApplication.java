@@ -20,6 +20,7 @@ public class TaskManagerApplication {
 		SpringApplication.run(TaskManagerApplication.class, args);
 	}
 
+	/*
 	@Bean
 	public CommandLineRunner demo(ITaskDao repository) {
 		return (args) -> {
@@ -43,5 +44,6 @@ public class TaskManagerApplication {
 
 		};
 	}
+	 */
 
 }
