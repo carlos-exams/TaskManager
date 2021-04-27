@@ -33,9 +33,19 @@ public abstract class AbstractService <T extends AbstractEntity> implements ISer
     }
 
     @Override
-    public boolean delete(T t) {
+    public boolean update(T t) {
         try {
             getDao().save(t);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean delete(T t) {
+        try {
+            getDao().delete(t);
             return true;
         } catch (Exception e) {
             return false;

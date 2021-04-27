@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("TaskStatus")
+@RequestMapping("task-status")
 public class TaskStatusController extends AbstractController<TaskStatusDto, ITaskStatusService> {
 
     @Autowired
@@ -36,4 +36,5 @@ public class TaskStatusController extends AbstractController<TaskStatusDto, ITas
     public ITaskStatusService getService() {
         return taskStatusService;
     }
+
 }

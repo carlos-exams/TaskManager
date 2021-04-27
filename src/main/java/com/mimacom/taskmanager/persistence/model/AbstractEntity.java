@@ -34,6 +34,12 @@ public abstract class AbstractEntity {
         super();
     }
 
+    public AbstractEntity(Integer id, Date creationDate, Date updateDate) {
+        setId(id);
+        setCreationDate(creationDate);
+        setUpdateDate(updateDate);
+    }
+
     @PrePersist
     protected void onCreate(){
         updateDate = creationDate = new Date();

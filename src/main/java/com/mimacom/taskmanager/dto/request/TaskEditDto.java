@@ -1,19 +1,21 @@
 package com.mimacom.taskmanager.dto.request;
 
-import lombok.*;
-import javax.validation.constraints.Min;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
-@RequiredArgsConstructor
-public class TaskCreateDto {
+public class TaskEditDto {
     @Getter(AccessLevel.PUBLIC)
     @Setter(AccessLevel.PUBLIC)
     @NonNull
-    @Size(min=2, max=30)
-    @NotNull(message = "Name cannot be null")
-    protected String name;
+    @NotNull
+    @Positive
+    protected Integer id;
 
     @Getter(AccessLevel.PUBLIC)
     @Setter(AccessLevel.PUBLIC)
@@ -22,20 +24,17 @@ public class TaskCreateDto {
 
     @Getter(AccessLevel.PUBLIC)
     @Setter(AccessLevel.PUBLIC)
-    @NonNull
-    @NotNull(message = "A task status Id must be provided")
     @Positive
     protected Integer taskStatusId;
 
-    public TaskCreateDto() {
+    public TaskEditDto() {
         super();
     }
 
-    public TaskCreateDto(String name, String description, Integer taskStatusId) {
+    public TaskEditDto(Integer id, String description, Integer taskStatusId) {
         this();
-        setName(name);
-        setDescription(description);
-        setTaskStatusId(taskStatusId);
+        this.id = id;
+        this.description = description;
+        this.taskStatusId = taskStatusId;
     }
-
 }

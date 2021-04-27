@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @EqualsAndHashCode(callSuper = true)
@@ -32,5 +33,9 @@ public class TaskStatus extends AbstractEntity{
         this.setName(name);
         this.setDescription(description);
     }
-
+    public TaskStatus(Integer id, Date creationDate, Date updateDate, String name, String description) {
+        super(id, creationDate, updateDate);
+        this.setName(name);
+        this.setDescription(description);
+    }
 }
