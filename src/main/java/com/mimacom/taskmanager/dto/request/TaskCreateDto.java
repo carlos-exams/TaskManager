@@ -19,6 +19,12 @@ public class CreateTaskDto {
     @Size(min=0, max=50)
     protected String description;
 
+    @Getter(AccessLevel.PUBLIC)
+    @Setter(AccessLevel.PUBLIC)
+    @NonNull
+    @NotNull
+    protected Integer taskStatusId;
+
     public CreateTaskDto() {
         super();
     }

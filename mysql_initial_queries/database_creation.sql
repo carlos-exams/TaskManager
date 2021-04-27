@@ -3,7 +3,6 @@ CREATE DATABASE Task_Manager;
 USE Task_Manager;
 
 
-
 CREATE TABLE task_status (
 id INT(6) UNSIGNED AUTO_INCREMENT,
 creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -43,3 +42,5 @@ VALUES (2,now(),now(),'Develop frontend', 1, 'Create a functional Angular applic
 
 INSERT INTO task
 VALUES (3,now(),now(),'Call Ainara', 1, 'Show Ainara the task manager');
+
+
