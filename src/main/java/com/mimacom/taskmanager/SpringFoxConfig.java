@@ -2,6 +2,8 @@ package com.mimacom.taskmanager;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -14,6 +16,7 @@ import java.util.Collections;
 
 @Configuration
 @EnableSwagger2
+@Import(BeanValidatorPluginsConfiguration.class)
 public class SpringFoxConfig {
     @Bean
     public Docket api() {
